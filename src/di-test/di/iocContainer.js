@@ -39,7 +39,7 @@ class IocContainer {
             providers.push(Provider);
         };
 
-        this.bootstrap = function (requiredProviders) {
+        this.setContextDependencies = function (requiredProviders) {
             requiredProviders.forEach(function (RequiredProvider) {
                 var idsByProvider = findIdsByProvider(RequiredProvider, providersById),
                     providerInstance = new RequiredProvider();

@@ -1,18 +1,28 @@
 'use strict';
 
 //TODO: inject by interface
-//TODO: inject via constructor or any other way to descrease amount of nonsence to write for getter/setter
+//TODO: inject via constructor or any other way to decrease amount of nonsence to write for getter/setter
 //TODO: make sure that instances inside proiders are also created as required
 
-import Duck from './di-test/Duck'
+/*==========================*/
+/*auto-injection from context*/
+/*==========================*/
+
 import SampleContext from './di-test/context/SampleContext'
-import FakeQuackBehaviour from './di-test/behaviours/FakeQuackBehaviour'
+import Duck from './di-test/Duck'
 
 var sampleContext = new SampleContext();
 sampleContext.bootstrap();
 
 const duck = new Duck('Koko');
 duck.quack();
+
+
+/*==========================*/
+/*manual injection*/
+/*==========================*/
+
+import FakeQuackBehaviour from './di-test/behaviours/FakeQuackBehaviour'
 
 const duckManual = new Duck('Koko');
 duckManual.quackBehaviour = new FakeQuackBehaviour();

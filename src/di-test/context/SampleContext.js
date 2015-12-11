@@ -9,7 +9,7 @@ class RealContext {
     bootstrap() {
 
         //TODO: you can have decorator for this, smth like @contextBootstrapper
-        iocContainer.bootstrap([
+        iocContainer.setContextDependencies([
             RealQuackBehaviour
         ]);
     }
