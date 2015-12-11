@@ -1,19 +1,55 @@
+function findIdsByProvider(RequiredProvider, providersById) {
+    var result = [];
+
+    for (var id in providersById) {
+        var providers = providersById[id];
+        if (providers.indexOf(RequiredProvider) !== -1) {
+            result.push(id);
+        }
+    }
+
+    return result;
+}
+
 class IocContainer {
 
     constructor() {
-        var privateIocContainerStore = {};
+        var singleDependencyInstanceById = {},
+            providersById = {};
 
-        this.getDependencyInstanceById = function (id) {
-            return privateIocContainerStore[id];
-        };
-
-        this.setDependencyById = function (id, DependencyProviderClass) {
-            if (privateIocContainerStore[id]) {
+        function setDependencyById(id, dependency) {
+            if (singleDependencyInstanceById[id]) {
                 throw new Error('Error setting instance by ID, it has already been set');
             }
 
-            privateIocContainerStore[id] = new DependencyProviderClass();
+            singleDependencyInstanceById[id] = dependency;
+        }
+
+        this.getDependencyInstanceById = function (id) {
+            return singleDependencyInstanceById[id];
         };
+
+        this.registerProvider = function (id, Provider) {
+            var providers = providersById[id];
+            if (!providers) {
+                providers = [];
+                providersById[id] = providers;
+            }
+
+            providers.push(Provider);
+        };
+
+        this.bootstrap = function (requiredProviders) {
+            requiredProviders.forEach(function (RequiredProvider) {
+                var idsByProvider = findIdsByProvider(RequiredProvider, providersById),
+                    providerInstance = new RequiredProvider();
+
+                idsByProvider.forEach(function (id) {
+                    setDependencyById(id, providerInstance);
+                });
+
+            })
+        }
     }
 }
 

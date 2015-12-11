@@ -6,9 +6,13 @@ class Duck {
         console.log('Duck', name, 'is created');
     }
 
-    @inject('quackBehaviour')
     get quackBehaviour() {
         return this._quackBehaviour;
+    }
+
+    @inject('quackBehaviour')
+    set quackBehaviour(value) {
+        this._quackBehaviour = value;
     }
 
     quack() {

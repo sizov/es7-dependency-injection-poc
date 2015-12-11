@@ -12,7 +12,7 @@ export function inject(id) {
             if (originalGetterResult) {
                 return originalGetterResult;
             }
-            return iocContainer.getDependencyInstanceById('realDuckQuackBehaviour');
+            return iocContainer.getDependencyInstanceById(id);
         };
 
     }

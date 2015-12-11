@@ -4,7 +4,6 @@ import { provide } from '../di/Provide';
 class RealQuackBehaviour {
 
     constructor() {
-        console.log('RealQuackBehaviour is created');
     }
 
     quack() {
