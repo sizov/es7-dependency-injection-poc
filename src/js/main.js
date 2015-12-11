@@ -8,8 +8,8 @@
 /*auto-injection from context*/
 /*==========================*/
 
-import SampleContext from './di-test/context/SampleContext'
-import Duck from './di-test/Duck'
+import SampleContext from './context/SampleContext'
+import Duck from './vo/Duck'
 
 var sampleContext = new SampleContext();
 sampleContext.bootstrap();
@@ -22,7 +22,7 @@ duck.quack();
 /*manual injection*/
 /*==========================*/
 
-import FakeQuackBehaviour from './di-test/behaviours/FakeQuackBehaviour'
+import FakeQuackBehaviour from './behaviours/FakeQuackBehaviour'
 
 const duckManual = new Duck('Koko');
 duckManual.quackBehaviour = new FakeQuackBehaviour();

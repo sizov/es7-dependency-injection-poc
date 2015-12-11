@@ -1,4 +1,4 @@
-import { provide } from '../di/Provide';
+import { provide } from '../lib/di/Provide';
 
 @provide('quackBehaviour')
 class RealQuackBehaviour {

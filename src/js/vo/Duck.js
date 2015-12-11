@@ -1,4 +1,4 @@
-import { inject } from './di/Inject';
+import { inject } from '../lib/di/Inject';
 
 class Duck {
 
