@@ -1,1 +1,1 @@
-# POC for IOC/DI with ES7 decorators
+# POC for IOC/DI with custom ES7 decorators
